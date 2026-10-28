@@ -1,41 +1,38 @@
 enabled:
   default: true
 backdrop_color:
-  default: '#08090d'
-  description: 'Color behind the transparent canvas. The background opacity setting affects both this backdrop and the animation.'
-background_opacity:
-  default: 0.25
-  min: 0
-  max: 1
-particle_count:
-  default: 60
-  min: 10
-  max: 200
-particle_speed:
-  default: 1.0
-  min: 0.1
-  max: 3
-harmful_ratio:
-  default: 0.25
-  min: 0
-  max: 1
-clean_color:
-  default: '#ffffff'
-harmful_color:
-  default: '#ff5555'
-glass_width:
-  default: 3.5
-  min: 0.5
-  max: 5
-refraction:
-  default: 0.5
-  min: 0
-  max: 2
-aberration:
-  default: 0.8
-  min: 0
-  max: 3
-ripple:
-  default: 1.0
-  min: 0
-  max: 3
+  default: 'transparent'
+  description: 'Background color behind the grid (e.g. transparent, #ffffff, or #08090d).'
+dot_color:
+  default: '#000000'
+  description: 'Color of the square dots (e.g. #000000 for light themes, #ffffff for dark themes).'
+dot_size:
+  default: 2
+  min: 1
+  max: 10
+  description: 'Size of each square dot in pixels.'
+grid_gap:
+  default: 14
+  min: 6
+  max: 50
+  description: 'Distance between grid dots in pixels.'
+min_opacity:
+  default: 0.04
+  min: 0.0
+  max: 1.0
+  description: 'Base/resting opacity of dots.'
+max_opacity:
+  default: 0.35
+  min: 0.0
+  max: 1.0
+  description: 'Peak opacity when dots twinkle.'
+twinkle_speed:
+  default: 0.4
+  min: 0.05
+  max: 3.0
+  description: 'Speed of the fading animation.'
+twinkle_density:
+  default: 0.15
+  min: 0.01
+  max: 1.0
+  description: 'Portion of dots that actively twinkle at any time.'

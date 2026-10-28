@@ -5,9 +5,20 @@
   pointer-events: none;
   overflow: hidden;
   background-color: #{$backdrop_color};
-  canvas { display: block; width: 100%; height: 100%; }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
-body:has(.glass-particle-background) { isolation: isolate; }
-@media (max-width: 767px), (prefers-reduced-motion: reduce) {
-  .glass-particle-background { display: none; }
+
+body:has(.glass-particle-background) {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-particle-background {
+    display: none;
+  }
 }
