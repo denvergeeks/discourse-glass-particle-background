@@ -12,6 +12,19 @@ function parseHexColor(hex) {
   };
 }
 
+function hslToRgb(h, s, l) {
+  s /= 100;
+  l /= 100;
+  const k = (n) => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = (n) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return {
+    r: Math.round(255 * f(0)),
+    g: Math.round(255 * f(8)),
+    b: Math.round(255 * f(4)),
+  };
+}
+
 export function startTwinklingGrid(element, settings) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -19,11 +32,14 @@ export function startTwinklingGrid(element, settings) {
 
   const dotSize = Math.max(1, Number(settings.dot_size) || 1);
   const gridGap = Math.max(2, Number(settings.grid_gap) || 4);
-  const minOpacity = Math.max(0, Number(settings.min_opacity) ?? 0.02);
-  const maxOpacity = Math.max(minOpacity, Number(settings.max_opacity) ?? 0.18);
+  const minOpacity = Math.max(0, Number(settings.min_opacity) ?? 0.04);
+  const maxOpacity = Math.max(minOpacity, Number(settings.max_opacity) ?? 0.40);
   const speed = Math.max(0.01, Number(settings.twinkle_speed) || 0.8);
-  const density = Math.min(1, Math.max(0.01, Number(settings.twinkle_density) || 0.20));
-  const rgb = parseHexColor(settings.dot_color || '#000000');
+  const density = Math.min(1, Math.max(0.01, Number(settings.twinkle_density) || 0.25));
+  const isRainbow = settings.color_mode !== 'solid';
+  const sat = Number(settings.rainbow_saturation) ?? 85;
+  const light = Number(settings.rainbow_lightness) ?? 50;
+  const solidRgb = parseHexColor(settings.dot_color || '#000000');
 
   let destroyed = false;
   let animId = null;
@@ -54,13 +70,23 @@ export function startTwinklingGrid(element, settings) {
       for (let c = 0; c < cols; c++) {
         const idx = r * cols + c;
         const twinks = Math.random() < density;
+
+        let rgb = solidRgb;
+        if (isRainbow) {
+          const hue = Math.floor(Math.random() * 360);
+          rgb = hslToRgb(hue, sat, light);
+        }
+
         dots[idx] = {
           x: c * gridGap,
           y: r * gridGap,
+          r: rgb.r,
+          g: rgb.g,
+          b: rgb.b,
           phase: Math.random() * Math.PI * 2,
           freq: (0.5 + Math.random() * 1.0) * speed,
           twinks,
-          staticAlpha: minOpacity + Math.random() * (maxOpacity - minOpacity) * 0.1,
+          staticAlpha: minOpacity + Math.random() * (maxOpacity - minOpacity) * 0.12,
         };
       }
     }
@@ -86,7 +112,7 @@ export function startTwinklingGrid(element, settings) {
         alpha = d.staticAlpha;
       }
 
-      ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha.toFixed(3)})`;
+      ctx.fillStyle = `rgba(${d.r},${d.g},${d.b},${alpha.toFixed(3)})`;
       ctx.fillRect(d.x, d.y, dotSize, dotSize);
     }
 

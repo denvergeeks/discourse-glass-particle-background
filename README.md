@@ -1,25 +1,29 @@
-# Twinkling Dot Grid Background (Discourse Theme Component)
+# Rainbow Twinkling Dot Grid Background (Discourse Theme Component)
 
-A lightweight 2D canvas background for Discourse that renders a subtle, uniform grid of tiny square dots with independent, gentle star-like fading (twinkling). Zero mouse tracking or interactive ripple effects.
+A lightweight 2D canvas background for Discourse that renders a subtle, uniform grid of tiny square dots in full rainbow hues with gentle, autonomous twinkling (like colorful stars).
 
 ## Features
 
-- **Autonomous Twinkling:** Each grid dot pulses smoothly on its own random sine-wave phase and frequency.
-- **Pure 2D Canvas:** Zero external libraries (no Three.js, WebGL shaders, or bundle overhead).
-- **Zero Mouse Interactions:** Completely non-interactive and pointer-events transparent.
-- **Configurable in Discourse Admin:** Dot size, grid gap, min/max opacity, twinkle speed, dot color, and density.
-- **Mobile & Battery Friendly:** Automatically pauses when the browser tab is hidden or when `prefers-reduced-motion` is active.
+- **Full Rainbow Palette:** Each grid dot receives a randomized spectral hue across 360° of color.
+- **Autonomous Twinkling:** Each dot gently pulses on its own sine-wave phase and frequency.
+- **Pure 2D Canvas:** Zero external dependencies (no Three.js or WebGL).
+- **Zero Mouse Tracking:** Completely non-interactive and pointer-events transparent.
+- **Configurable:** Dot size, grid gap, min/max opacity, twinkle speed, rainbow saturation, and lightness.
+- **Mobile & Battery Friendly:** Pauses when the tab is hidden or when reduced motion is preferred.
 
 ## Settings
 
 | Setting | Default | Description |
 |---|---|---|
-| `enabled` | `true` | Toggle the entire background component. |
-| `dot_color` | `#000000` | Hex color of the dots (`#000000` for light theme, `#ffffff` for dark). |
-| `backdrop_color` | `transparent` | Optional solid or tinted background under the grid. |
-| `dot_size` | `2` | Size of each dot in pixels. |
-| `grid_gap` | `14` | Distance between grid points in pixels. |
-| `min_opacity` | `0.04` | Baseline resting opacity for all grid dots. |
-| `max_opacity` | `0.35` | Peak opacity when a dot reaches full twinkle. |
-| `twinkle_speed` | `0.4` | Speed multiplier for the fade cycle. |
-| `twinkle_density` | `0.15` | Portion of grid dots (0.01 - 1.0) that actively pulse. |
+| `enabled` | `true` | Toggle the background on/off. |
+| `color_mode` | `rainbow` | `rainbow` (full spectrum) or `solid` (uses `dot_color`). |
+| `dot_color` | `#000000` | Fallback color when `color_mode` is `solid`. |
+| `backdrop_color` | `transparent` | Optional backdrop color under the grid. |
+| `dot_size` | `1` | Dot size in pixels. |
+| `grid_gap` | `4` | Distance between dots in pixels. |
+| `min_opacity` | `0.04` | Baseline resting opacity of dots. |
+| `max_opacity` | `0.40` | Peak opacity when dots twinkle. |
+| `twinkle_speed` | `0.8` | Speed multiplier for fading cycle. |
+| `twinkle_density` | `0.25` | Percentage of dots that twinkle. |
+| `rainbow_saturation` | `85` | Saturation % of rainbow dots. |
+| `rainbow_lightness` | `50` | Lightness % of rainbow dots (adjust for light/dark themes). |
