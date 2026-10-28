@@ -17,12 +17,12 @@ export function startTwinklingGrid(element, settings) {
   const ctx = canvas.getContext('2d');
   element.appendChild(canvas);
 
-  const dotSize = Math.max(1, Number(settings.dot_size) || 2);
-  const gridGap = Math.max(4, Number(settings.grid_gap) || 14);
-  const minOpacity = Math.max(0, Number(settings.min_opacity) ?? 0.04);
-  const maxOpacity = Math.max(minOpacity, Number(settings.max_opacity) ?? 0.35);
-  const speed = Math.max(0.01, Number(settings.twinkle_speed) || 0.4);
-  const density = Math.min(1, Math.max(0.01, Number(settings.twinkle_density) || 0.15));
+  const dotSize = Math.max(1, Number(settings.dot_size) || 1);
+  const gridGap = Math.max(2, Number(settings.grid_gap) || 4);
+  const minOpacity = Math.max(0, Number(settings.min_opacity) ?? 0.02);
+  const maxOpacity = Math.max(minOpacity, Number(settings.max_opacity) ?? 0.18);
+  const speed = Math.max(0.01, Number(settings.twinkle_speed) || 0.8);
+  const density = Math.min(1, Math.max(0.01, Number(settings.twinkle_density) || 0.20));
   const rgb = parseHexColor(settings.dot_color || '#000000');
 
   let destroyed = false;
@@ -58,9 +58,9 @@ export function startTwinklingGrid(element, settings) {
           x: c * gridGap,
           y: r * gridGap,
           phase: Math.random() * Math.PI * 2,
-          freq: (0.4 + Math.random() * 0.8) * speed,
+          freq: (0.5 + Math.random() * 1.0) * speed,
           twinks,
-          staticAlpha: minOpacity + Math.random() * (maxOpacity - minOpacity) * 0.15,
+          staticAlpha: minOpacity + Math.random() * (maxOpacity - minOpacity) * 0.1,
         };
       }
     }

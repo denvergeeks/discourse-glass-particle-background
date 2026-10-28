@@ -7,32 +7,32 @@ dot_color:
   default: '#000000'
   description: 'Color of the square dots (e.g. #000000 for light themes, #ffffff for dark themes).'
 dot_size:
-  default: 2
+  default: 1
   min: 1
   max: 10
   description: 'Size of each square dot in pixels.'
 grid_gap:
-  default: 14
-  min: 6
+  default: 4
+  min: 2
   max: 50
   description: 'Distance between grid dots in pixels.'
 min_opacity:
-  default: 0.04
+  default: 0.02
   min: 0.0
   max: 1.0
-  description: 'Base/resting opacity of dots.'
+  description: 'Base resting opacity of dots.'
 max_opacity:
-  default: 0.35
+  default: 0.18
   min: 0.0
   max: 1.0
   description: 'Peak opacity when dots twinkle.'
 twinkle_speed:
-  default: 0.4
+  default: 0.8
   min: 0.05
-  max: 3.0
+  max: 5.0
   description: 'Speed of the fading animation.'
 twinkle_density:
-  default: 0.15
+  default: 0.20
   min: 0.01
   max: 1.0
   description: 'Portion of dots that actively twinkle at any time.'
