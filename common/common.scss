@@ -4,6 +4,7 @@
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  background-color: #{$backdrop_color};
   canvas { display: block; width: 100%; height: 100%; }
 }
 body:has(.glass-particle-background) { isolation: isolate; }

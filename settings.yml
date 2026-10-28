@@ -1,5 +1,8 @@
 enabled:
   default: true
+backdrop_color:
+  default: '#08090d'
+  description: 'Color behind the transparent canvas. The background opacity setting affects both this backdrop and the animation.'
 background_opacity:
   default: 0.25
   min: 0
