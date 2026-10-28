@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { registerDestructor } from '@ember/destroyable';
-import { didInsert } from '@ember-modifier/lifecycle';
+import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import { apiInitializer } from 'discourse/lib/api';
 import loadScript from 'discourse/lib/load-script';
 import { startBackground } from '../lib/glass-particle-background';
