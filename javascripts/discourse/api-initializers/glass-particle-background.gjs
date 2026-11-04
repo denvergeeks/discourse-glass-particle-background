@@ -24,7 +24,11 @@ class TwinklingGridBackground extends Component {
   mount(element) {
     this.element = element;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (prefersReducedMotion && settings.respect_reduced_motion) {
       return;
     }
 
