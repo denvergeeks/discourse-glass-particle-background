@@ -17,8 +17,10 @@ body:has(.glass-particle-background) {
   isolation: isolate;
 }
 
+/*
 @media (prefers-reduced-motion: reduce) {
   .glass-particle-background {
     display: none;
   }
 }
+*/
