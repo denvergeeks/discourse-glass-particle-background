@@ -1,7 +1,7 @@
 enabled:
   default: true
 respect_reduced_motion:
-  default: true
+  default: false
   description: 'Pause animation for visitors whose system requests reduced motion. Set to false to always animate.'
 color_mode:
   default: 'rainbow'
@@ -17,7 +17,7 @@ dot_color:
   default: '#000000'
   description: 'Color of the square dots when color_mode is solid.'
 dot_size:
-  default: 1
+  default: 3
   min: 1
   max: 10
   description: 'Size of each square dot in pixels.'
